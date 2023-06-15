@@ -3,6 +3,7 @@ package kr.hs.study.Model2.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -52,6 +53,25 @@ public class getParameterController {
         mv.setViewName("test3");
         return mv;
     }
+
+    @GetMapping("/test4")
+    public ModelAndView test4(@RequestParam String n,
+                              @RequestParam String m,
+                              ModelAndView mv){
+        mv.addObject("n",n);
+        mv.addObject("m",m);
+        int n2 = Integer.parseInt(n);
+        int m2 = Integer.parseInt(m);
+        int sum=0;
+        for(int i=n2; i<=m2; i++){
+            sum+=i;
+        }
+        mv.addObject("sum",sum);
+        mv.setViewName("test4");
+        return mv;
+    }
+
+
 
 
 
