@@ -4,8 +4,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class getParameterController {
@@ -22,5 +25,39 @@ public class getParameterController {
 
 
         return "re_test1";
+
     }
+        @GetMapping("/test2")
+        public String test2(Model model){
+            List<String> list= new ArrayList<>();
+            list.add("kim");
+            list.add("lee");
+            list.add("park");
+            list.add("kang");
+            list.add("min");
+            model.addAttribute("list1",list);
+            return "re_test2";
+
+        }
+
+    @GetMapping("/test3")
+    public ModelAndView test3(ModelAndView mv){
+        List<String> list= new ArrayList<>();
+        list.add("kim");
+        list.add("lee");
+        list.add("park");
+        list.add("kang");
+        list.add("min");
+        mv.addObject("list2",list);
+        mv.setViewName("test3");
+        return mv;
+    }
+
+
+
+
+
+
 }
+
+
